@@ -30,6 +30,9 @@ namespace BulkyWeb.Controllers
             {
                 ModelState.AddModelError("name", "Display order and Name cannot be same");
             }
+            if(int.TryParse(obj.Name, out _)) {
+                ModelState.AddModelError("name", "Name Cannot be a number");
+            }
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
