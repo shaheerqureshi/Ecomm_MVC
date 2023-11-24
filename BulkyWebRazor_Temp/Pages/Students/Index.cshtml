@@ -1,0 +1,44 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Students.IndexModel
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Student List</h2>
+
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="Students/Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create new Category</a>
+        </div>
+
+    </div>
+
+<table class="table table-bordered table-striped my-5 table-responsive">
+    <thead>
+    <tr>
+        <th>Student Name</th>
+        <th>Department</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var obj in Model.studentList.OrderBy(u=>u.id))
+        {
+        <tr>
+            <td>@obj.name</td>
+            <td>@obj.dept</td>
+            <td>
+                <div class="w-75 btn-group">
+                   <a asp-page="Students/Edit"  asp-route-id="@obj.id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-page="Students/Delete" asp-route-id="@obj.id" class="btn btn-danger mx-3"><i class="bi bi-trash3"></i> Delete</a>
+               </div>
+
+                 
+                 
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+</table>
+</div>
