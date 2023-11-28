@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace BulkyWebRazor_Temp.Models
 {
@@ -8,7 +9,10 @@ namespace BulkyWebRazor_Temp.Models
         public int id { get; set; }
 
         [Required]
+        [DisplayName("Name")]
+        
         public string name { get; set; }
+        [DisplayName("Department")]
         public string dept { get; set; }
     }
 }
