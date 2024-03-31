@@ -32,6 +32,7 @@ namespace BulkyWebMVC.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index", "Category");
             }
             return View();
@@ -64,6 +65,7 @@ namespace BulkyWebMVC.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index", "Category");
             }
             return View();
