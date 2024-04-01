@@ -1,4 +1,4 @@
-using BulkyWebMVC.Data;
+using Bulk.DataAccess.Data;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,9 +1,9 @@
-﻿using BulkyWebMVC.Data;
-using BulkyWebMVC.Models;
+﻿using Bulk.DataAccess.Data;
+using Bulk.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BulkyWebMVC.Controllers
+namespace Bulk.Controllers
 {
     public class CategoryController : Controller
     {
