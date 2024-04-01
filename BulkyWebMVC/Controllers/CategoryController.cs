@@ -1,4 +1,5 @@
 ﻿using Bulk.DataAccess.Data;
+using Bulk.DataAccess.Repository.IRepository;
 using Bulk.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -7,14 +8,14 @@ namespace Bulk.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _categoryRepo;
+        public CategoryController(ICategoryRepository db)
         {
-            _db = db;
+            _categoryRepo = db;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
             return View(objCategoryList);
         }
         public IActionResult Create()
@@ -30,8 +31,8 @@ namespace Bulk.Controllers
             }
             if(ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _categoryRepo.Add(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -45,10 +46,10 @@ namespace Bulk.Controllers
             {
                 return NotFound();
             }
-            Category? catfromDb = _db.Categories.Find(id);
+            Category? catfromDb = _categoryRepo.Get(u=>u.Id == id);
             //Category? catfromDb1 = _db.Categories.FirstOrDefault(u=>u.Id ==id);
             //Category? catfromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
-            if(catfromDb == null)
+            if (catfromDb == null)
             {
                 return NotFound();
             }
@@ -63,8 +64,8 @@ namespace Bulk.Controllers
             }
             if(ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _categoryRepo.Update(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -78,7 +79,7 @@ namespace Bulk.Controllers
             {
                 return NotFound();
             }
-            Category? catfromDb = _db.Categories.Find(id);
+            Category? catfromDb = _categoryRepo.Get(u => u.Id == id);
             //Category? catfromDb1 = _db.Categories.FirstOrDefault(u=>u.Id ==id);
             //Category? catfromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
             if (catfromDb == null)
@@ -90,13 +91,13 @@ namespace Bulk.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
-            if(obj == null)
+            Category? obj = _categoryRepo.Get(u => u.Id == id);
+            if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _categoryRepo.Remove(obj);
+            _categoryRepo.Save();
                 return RedirectToAction("Index", "Category");
         }
     }
