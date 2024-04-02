@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34321.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkyWebMVC", "BulkyWebMVC\BulkyWebMVC.csproj", "{270690D5-D042-499C-BB11-1A4966550733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkBookWeb", "BulkyWebMVC\BulkBookWeb.csproj", "{270690D5-D042-499C-BB11-1A4966550733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulk.DataAccess", "Bulk.DataAccess\Bulk.DataAccess.csproj", "{AAB0FD75-1981-446F-891D-73BA42758B15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkBook.DataAccess", "Bulk.DataAccess\BulkBook.DataAccess.csproj", "{AAB0FD75-1981-446F-891D-73BA42758B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulk.Models", "Bulk.Models\Bulk.Models.csproj", "{368B00D8-8D11-43B9-9AC1-A5B56DBC5E3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkBook.Models", "Bulk.Models\BulkBook.Models.csproj", "{368B00D8-8D11-43B9-9AC1-A5B56DBC5E3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulk.Utility", "Bulk.Utility\Bulk.Utility.csproj", "{D7CCB517-4608-482C-87A1-321DF0A1DD8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkBookUtility", "Bulk.Utility\BulkBookUtility.csproj", "{D7CCB517-4608-482C-87A1-321DF0A1DD8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

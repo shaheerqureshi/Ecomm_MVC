@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bulk.Models\Bulk.Models.csproj" />
-    <ProjectReference Include="..\Bulk.Utility\Bulk.Utility.csproj" />
+    <ProjectReference Include="..\Bulk.Models\BulkBook.Models.csproj" />
+    <ProjectReference Include="..\Bulk.Utility\BulkBookUtility.csproj" />
   </ItemGroup>
 
 </Project>
