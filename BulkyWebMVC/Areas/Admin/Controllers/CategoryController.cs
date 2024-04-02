@@ -5,8 +5,9 @@ using BulkBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Bulk.Controllers
+namespace BulkBookWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -26,11 +27,11 @@ namespace Bulk.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("name", "Name and display order cannopt be same");
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Add(obj);
                 _unitOfWork.Save();
@@ -38,16 +39,16 @@ namespace Bulk.Controllers
                 return RedirectToAction("Index", "Category");
             }
             return View();
-            
-            
+
+
         }
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Category? catfromDb = _unitOfWork.Category.Get(u=>u.Id == id);
+            Category? catfromDb = _unitOfWork.Category.Get(u => u.Id == id);
             //Category? catfromDb1 = _db.Categories.FirstOrDefault(u=>u.Id ==id);
             //Category? catfromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
             if (catfromDb == null)
@@ -59,11 +60,11 @@ namespace Bulk.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("name", "Name and display order cannopt be same");
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(obj);
                 _unitOfWork.Save();
@@ -71,8 +72,8 @@ namespace Bulk.Controllers
                 return RedirectToAction("Index", "Category");
             }
             return View();
-            
-            
+
+
         }
         public IActionResult Delete(int? id)
         {
@@ -99,7 +100,7 @@ namespace Bulk.Controllers
             }
             _unitOfWork.Category.Remove(obj);
             _unitOfWork.Save();
-                return RedirectToAction("Index", "Category");
+            return RedirectToAction("Index", "Category");
         }
     }
 }
